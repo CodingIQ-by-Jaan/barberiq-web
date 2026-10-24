@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/archivo/wdth.css';
+
+/* -----------------------------------------------------------------------------
+   BarberIQ — tokens
+   Barbicide (primario), cordobán (cuero de silla: alertas), porcelana (azulejo),
+   cromo (líneas), ink (texto y barra lateral).
+----------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #17212b;
+  --color-ink-soft: #2a3744;
+  --color-ink-muted: #5b6875;
+  --color-porcelana: #f5f7f7;
+  --color-cromo: #d5dbe0;
+  --color-cromo-soft: #e8ecef;
+  --color-barbicide: #13809c;
+  --color-barbicide-dark: #0e6479;
+  --color-espuma: #e3f2f5;
+  --color-cordoban: #7a2e2b;
+  --color-cordoban-soft: #f6e9e8;
+  --color-ambar: #a8701a;
+  --color-ambar-soft: #fbf1df;
+  --color-musgo: #2f7a4f;
+  --color-musgo-soft: #e5f2ea;
+
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --radius-control: 0.5rem;
+  --radius-panel: 0.75rem;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-variation-settings: 'wdth' 100;
+    color: var(--color-ink);
+    background: var(--color-porcelana);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-barbicide);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  /* Títulos tipo rótulo: Archivo condensado */
+  .font-rotulo {
+    font-variation-settings: 'wdth' 72;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  .font-condensada {
+    font-variation-settings: 'wdth' 82;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Tiempo no laborable en la agenda */
+  .franja-cerrada {
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0 6px,
+      color-mix(in srgb, var(--color-cromo) 55%, transparent) 6px 7px
+    );
+  }
+}
